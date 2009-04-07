@@ -14,6 +14,15 @@ module ActionView::Helpers
 
     end
     
+    def growl4rails_engine_includes(duration = 5000, max_showing = 3)
+      javascript_tag("var growl4rails_duration = #{duration}; var growl4rails_max_showing = #{max_showing};") + "\n" +
+      javascript_include_tag("growl4rails", :plugin => "growl4rails") + "\n" +      
+      stylesheet_link_tag("growl4rails.css", :plugin => 'growl4rails') + "\n" +
+      "<!--[if lt IE 7]>\n" +
+      stylesheet_link_tag("growl4rails_ie6.css", :plugin => 'growl4rails') + "\n" +
+      "<![endif]-->"
+    end
+    
     def asset_path
       "growl4rails/"
     end
